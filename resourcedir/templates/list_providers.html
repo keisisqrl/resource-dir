@@ -1,0 +1,11 @@
+<!doctype html>
+<title>Provider List</title>
+<h1>Provider List</h1>
+<ul>
+{% for p in providers %}
+<li>
+<a href="{{ url_for("show_provider", id=p.id) }}">
+{{ p.name }}
+</a></li>
+{% endfor %}
+</ul>

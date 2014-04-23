@@ -1,0 +1,9 @@
+<!doctype html>
+<title>Viewing Provider: {{ provider.name }}</title>
+
+<h1>{{ provider.name }}</h1>
+<p>{{ provider.description }}</p>
+<p><em>Updated: {{ provider.pub_date }}</em></p>
+<p><a href="{{ url_for('list_providers') }}">
+Return
+</a></p>
