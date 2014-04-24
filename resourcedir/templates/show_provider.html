@@ -7,6 +7,9 @@
 <p><a href="{{ url_for('list_providers') }}">
 Return
 </a><br>
+<a href="{{ url_for('modify_provider', id=provider.id) }}">
+Modify
+</a><br>
 <a href="{{ url_for('delete_provider', id=provider.id) }}">
 Delete
 </a></p>

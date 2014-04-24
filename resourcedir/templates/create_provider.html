@@ -1,11 +1,4 @@
 <!doctype html>
 <title>Add a Provider</title>
 <h1>Add a provider:</h1>
-<form method=POST>
-{{ form.hidden_tag() }}
-{{ form.name.label }}: {{ form.name(size=30) }}<br>
-{{ form.description.label }}:<br>
-{{ form.description(rows=8, cols=80) }}<br>
-<input type="submit" value="Submit">
-</form>
-
+{% include 'provider_form.html' %}
