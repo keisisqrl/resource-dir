@@ -33,7 +33,8 @@ def delete_provider(id):
 def create_provider():
     form = forms.ProviderForm()
     if form.validate_on_submit():
-	provider = models.Provider(form.name.data,form.description.data)
+	provider = models.Provider(form.name.data,form.description.data,
+        form.location.data)
 	db.session.add(provider)
 	db.session.commit()
 	return redirect(url_for('show_provider',id=provider.id))

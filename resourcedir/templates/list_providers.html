@@ -6,7 +6,7 @@
 <li>
 <a href="{{ url_for("show_provider", id=p.id) }}">
 {{ p.name }}
-</a></li>
+</a> &mdash; {{ p.location }}</li>
 {% endfor %}
 </ul>
 <a href="{{ url_for("create_provider") }}">

@@ -8,21 +8,21 @@ from resourcedir import models
 ##    description = TextAreaField('description', validators=[DataRequired()])
 
 ProviderForm = model_form(models.Provider, base_class=Form, field_args = {
-    'name': {
-	'validators': [validators.DataRequired()]
+        'name': {
+        'validators': [validators.DataRequired()]
     },
     'description': {
-	'validators': [validators.DataRequired()],
-	'widget': widgets.TextArea()
+        'validators': [validators.DataRequired()],
+        'widget': widgets.TextArea()
     }
 }, exclude = ['comments'])
 
 CommentForm = model_form(models.Comment, base_class=Form, field_args = {
     'submitter': {
-	'validators': [validators.DataRequired()]
+        'validators': [validators.DataRequired()]
     },
     'content': {
-	'validators': [validators.DataRequired()],
-	'widget': widgets.TextArea()
+        'validators': [validators.DataRequired()],
+        'widget': widgets.TextArea()
     }
 }, exclude = ['provider'])
