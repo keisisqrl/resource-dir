@@ -1,3 +1,4 @@
 from resourcedir import app
 
+app.secret_key = 'I\xc3\xef\xdc\xd2\xe1\xe6\x98M\xefX\xb1\xd30~\xccOqz\xfc\xea\xc0Bz'
 app.run(debug=True)
