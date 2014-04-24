@@ -4,6 +4,23 @@
 <h1>{{ provider.name }}</h1>
 <p>{{ provider.description }}</p>
 <p><em>Updated: {{ provider.pub_date }}</em></p>
+<p>Comments:
+<ul>
+{% for comment in provider.comments %}
+<li>{{ comment.content }}<br>
+&mdash; <em>{{ comment.submitter }} on {{ comment.pub_date }}
+</em></li>
+{% else %}
+<em>None</em>
+{% endfor %}
+</ul>
+<strong>Have a comment?</strong><br>
+<form method=POST action="{{ url_for('add_comment',id=provider.id) }}">
+{{ form.hidden_tag() }}
+{{ form.submitter.label }} {{ form.submitter() }}<br>
+{{ form.content.label}} {{ form.content(rows=5,cols=40) }}<br>
+<input type=submit value="Submit">
+</form>
 <p><a href="{{ url_for('list_providers') }}">
 Return
 </a><br>

@@ -15,5 +15,14 @@ ProviderForm = model_form(models.Provider, base_class=Form, field_args = {
 	'validators': [validators.DataRequired()],
 	'widget': widgets.TextArea()
     }
-})
+}, exclude = ['comments'])
 
+CommentForm = model_form(models.Comment, base_class=Form, field_args = {
+    'submitter': {
+	'validators': [validators.DataRequired()]
+    },
+    'content': {
+	'validators': [validators.DataRequired()],
+	'widget': widgets.TextArea()
+    }
+}, exclude = ['provider'])

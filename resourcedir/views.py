@@ -3,6 +3,7 @@ from flask import render_template, url_for, redirect, request
 from flask.ext.wtf import Form
 from wtforms.ext.sqlalchemy.orm import model_form
 
+## providers
 
 @app.route('/')
 @app.route('/providers')
@@ -18,7 +19,9 @@ def show_provider(id=None):
     provider = models.Provider.query.filter_by(id=id).first()
     if provider == None:
 	abort(404)
-    return render_template("show_provider.html",provider=provider)
+    comment_form = forms.CommentForm()
+    return render_template("show_provider.html",
+	provider=provider,form=comment_form)
 
 @app.route('/provider/<id>/delete')
 def delete_provider(id):
@@ -47,3 +50,14 @@ def modify_provider(id):
 	db.session.commit()
 	return redirect(url_for('show_provider',id=provider.id))
     return render_template('modify_provider.html',form=form,provider=provider)
+
+@app.route('/provider/<id>/comment', methods=('GET', 'POST'))
+def add_comment(id):
+    form = forms.CommentForm()
+    if form.validate_on_submit():
+	comment = models.Comment(form.submitter.data,
+	    form.content.data)
+	comment.provider_id = id
+	db.session.add(comment)
+	db.session.commit()
+    return redirect(url_for('show_provider',id=id))
